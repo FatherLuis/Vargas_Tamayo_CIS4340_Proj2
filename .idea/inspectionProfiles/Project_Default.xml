@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="Test.*" />
+          <option value="File_IO.__createRuleBook" />
         </list>
       </option>
     </inspection_tool>
