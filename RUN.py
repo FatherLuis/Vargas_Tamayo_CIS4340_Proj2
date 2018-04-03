@@ -1,6 +1,5 @@
-import tkinter as tk
-from File_IO import File_IO
+from MainGUI import MainGUI
 
-MainWindow = tk.Tk()
 
-f = File_IO().readFile()
+program = MainGUI()
+program.run()
