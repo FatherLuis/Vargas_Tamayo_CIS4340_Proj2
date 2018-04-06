@@ -40,6 +40,9 @@ class Analyser:
             # IF THE STRING AT A GIVEN INDEX IS B, THEN DO CODE
             elif vocab[i] == 'b':
                 self.currentState = self.ruleBook[1][self.currentState - 1]
+            else:
+                # IF THERE IS A LETTER THAT IS NOT A 'A' OR A 'B' THEN THE USER INPUT IS INVALID
+                return False
 
         # RETURNS A BOOLEAN: CHECKS IF THE CURRENT STATE IS EQUAL TO THE ACCEPTED STATE
         return True if self.currentState == self.acceptState else False

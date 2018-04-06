@@ -1,6 +1,6 @@
 import tkinter as tk
-from File_IO import File_IO
-from Analyzer import Analyser
+from Program.File_IO import File_IO
+from Program.Analyzer import Analyser
 
 
 # Class name: MainGUI
@@ -20,15 +20,19 @@ class MainGUI:
     # Date:  April 2, 2019
     def __btnEnter_click(self, event):
 
-        # CREATES AN OBJECT OF CLASS ANALYSER
-        referee = Analyser(self.rules.startingState, self.rules.acceptState, self.rules.RuleBook)
+        if self.lbl1.cget('text') != 'No File Selected':
 
-        # CHECKS IF THE USER INPUT ABIDE BY THE RULES SET UPON BY THE FILE
-        # A LABEL WILL SAY IF THE USER INPUT IS ACCEPTED OR NOT
-        if referee.vocabCheck(self.txtUserInput.get()):
-            self.lblStatus.config(text='Word is accepted')
+            # CREATES AN OBJECT OF CLASS ANALYSER
+            referee = Analyser(self.rules.startingState, self.rules.acceptState, self.rules.RuleBook)
+
+            # CHECKS IF THE USER INPUT ABIDE BY THE RULES SET UPON BY THE FILE
+            # A LABEL WILL SAY IF THE USER INPUT IS ACCEPTED OR NOT
+            if referee.vocabCheck(self.txtUserInput.get()):
+                self.lblStatus.config(text='Word is accepted')
+            else:
+                self.lblStatus.config(text='Word is not accepted!!')
         else:
-            self.lblStatus.config(text='Word is not accepted!!')
+            self.lblStatus.config(text='No acceptable file has been selected yet.')
 
     # Method Name: __btnUpLoad_click()
     # Purpose: This method is an event handler for a button
@@ -45,6 +49,8 @@ class MainGUI:
 
         # GUI LABEL1 WILL CONTAIN THE NAME OF THE FILE (IF ANY)
         self.lbl1.config(text=self.rules.fileName)
+        # LBLSTATUS IS CLEARED
+        self.lblStatus.config(text='')
 
     # Method Name:__INIT__
     # Purpose: Class constructor
@@ -60,7 +66,7 @@ class MainGUI:
         # CLASS VARIABLE WILL HOLD THE REFERENCE TO THE GUI WINDOW
         self.MainGUI = tk.Tk()
         # WINDOW TEXT WILL CONTAIN A TEXT
-        self.MainGUI.title('Finite Autonoma')
+        self.MainGUI.title('Finite State Machine')
         # THE INITIAL SIZE OF THE GUI
         self.MainGUI.geometry('400x300')
         # THE MINIMUM SIZE OF THE GUI

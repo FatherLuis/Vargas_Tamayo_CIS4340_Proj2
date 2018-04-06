@@ -1,4 +1,4 @@
-from MainGUI import MainGUI
+from Program.MainGUI import MainGUI
 
 #Class name: RUN
 #Class Author: Luis E. Vargas Tamayo
